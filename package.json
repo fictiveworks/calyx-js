@@ -1,0 +1,11 @@
+{
+  "name": "calyx",
+  "version": "0.0.2",
+  "description": "JavaScript port of https://rubygems.org/gem/calyx",
+  "main": "calyx.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "author": "Mark Rickerby",
+  "license": "MIT"
+}
