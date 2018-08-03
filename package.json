@@ -1,11 +1,28 @@
 {
   "name": "calyx",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "JavaScript port of https://rubygems.org/gem/calyx",
-  "main": "calyx.js",
+  "main": "dist/calyx.cjs.js",
+  "module": "dist/calyx.esm.js",
+  "browser": "dist/calyx.iife.js",
   "scripts": {
-    "test": "test.js"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "ava test"
   },
   "author": "Mark Rickerby",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "esm": "^3.0.73",
+    "rollup": "^0.63.4"
+  },
+  "files": [
+    "dist"
+  ],
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  }
 }
