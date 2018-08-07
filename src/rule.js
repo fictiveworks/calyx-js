@@ -1,12 +1,9 @@
 import choice from './production/choice'
-
-function weightedChoices() {
-  console.log("construct weighted choices")
-}
+import weightedChoice from './production/weighted-choice'
 
 function parseProductions(productions) {
   if (productions.length == undefined) {
-    return weightedChoices(productions)
+    return weightedChoice(productions)
   } else {
     return choice(productions)
   }
