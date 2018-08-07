@@ -1,22 +1,22 @@
-import choice from './production/choice'
-import weightedChoice from './production/weighted-choice'
+import choices from './production/choices'
+import weightedChoices from './production/weighted-choices'
 
-function parseProductions(productions) {
-  if (productions.length == undefined) {
-    return weightedChoice(productions)
+function parseProduction(production) {
+  if (production.length == undefined) {
+    return weightedChoices(production)
   } else {
-    return choice(productions)
+    return choices(production)
   }
 }
 
 class Rule {
-  constructor(name, productions) {
+  constructor(name, production) {
     this.name = name
-    this.productions = parseProductions(productions)
+    this.production = parseProduction(production)
   }
 
   evaluate() {
-    return this.productions.evaluate()
+    return this.production.evaluate()
   }
 }
 

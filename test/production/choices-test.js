@@ -1,5 +1,5 @@
 import test from 'ava'
-import choice from '../../src/production/choice'
+import choices from '../../src/production/choices'
 
 // TODO: result tree for this use case is undefined in the Ruby implementation
 // test('construct choices from single atom', t => {
@@ -9,7 +9,7 @@ import choice from '../../src/production/choice'
 // })
 
 test('construct choices from list of atoms', t => {
-	const production = choice(['atom', 'atom', 'atom'])
+	const production = choices(['atom', 'atom', 'atom'])
 
 	t.deepEqual(production.evaluate(), ['choice', ['concat', [['atom', 'atom']]]])
 })

@@ -1,6 +1,6 @@
 import concat from './concat'
 
-class Choice {
+class Choices {
   constructor(collection) {
     this.collection = collection
   }
@@ -11,7 +11,7 @@ class Choice {
   }
 }
 
-function choice(production) {
+function choices(production) {
   const productions = (typeof production == 'string') ? [production] : production
 
   const choices = productions.map((choice) => {
@@ -20,7 +20,7 @@ function choice(production) {
     }
   })
 
-  return new Choice(choices)
+  return new Choices(choices)
 }
 
-export default choice
+export default choices

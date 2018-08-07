@@ -1,6 +1,6 @@
 import concat from './concat'
 
-class WeightedChoice {
+class WeightedChoices {
   constructor(productions, weights, rng) {
     this.productions = productions
     this.weights = weights
@@ -27,7 +27,7 @@ class WeightedChoice {
   }
 }
 
-function weightedChoice(rules, rng) {
+function weightedChoices(rules, rng) {
   const productions = Object.keys(rules).map((rule) => concat(rule))
   const weights = Object.values(rules)
   const weightsTotal = weights.reduce((a,b) => a + b)
@@ -41,7 +41,7 @@ function weightedChoice(rules, rng) {
     normalizedWeights = weights
   }
 
-  return new WeightedChoice(productions, normalizedWeights, rng)
+  return new WeightedChoices(productions, normalizedWeights, rng)
 }
 
-export default weightedChoice
+export default weightedChoices
