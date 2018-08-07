@@ -1,5 +1,5 @@
 import test from 'ava'
-import calyx from '../../dist/calyx.cjs'
+import calyx from '../../src/calyx'
 
 test.skip('generate with explicit start symbol', t => {
   const grammar = calyx.grammar({

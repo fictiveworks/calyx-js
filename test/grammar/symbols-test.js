@@ -1,5 +1,5 @@
 import test from 'ava'
-import calyx from '../../dist/calyx.cjs'
+import calyx from '../../src/calyx'
 
 test.skip('substitutes a chain of rules with symbols', t => {
   const grammar = calyx.grammar({
