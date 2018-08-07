@@ -5,7 +5,7 @@ class NonTerminal {
   }
 
   evaluate() {
-    return [this.symbol, this.registry.expand(this.symbol).evaluate()]
+    return [Symbol.for(this.symbol), this.registry.expand(this.symbol).evaluate()]
   }
 }
 

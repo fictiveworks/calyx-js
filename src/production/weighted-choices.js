@@ -23,7 +23,7 @@ class WeightedChoices {
       }
     }
 
-    return ["weighted_choice", this.productions[maxIndex].evaluate()]
+    return [Symbol.for("weighted_choice"), this.productions[maxIndex].evaluate()]
   }
 }
 

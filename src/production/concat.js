@@ -12,7 +12,7 @@ class Concat {
       return accumulator
     }, [])
 
-    return ['concat', concat]
+    return [Symbol.for('concat'), concat]
   }
 }
 

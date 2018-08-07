@@ -4,7 +4,7 @@ class Terminal {
   }
 
   evaluate() {
-    return ['atom', this.atom]
+    return [Symbol.for('atom'), this.atom]
   }
 }
 

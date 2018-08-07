@@ -4,5 +4,5 @@ import Registry from '../src/registry'
 test('registry evaluates the start rule', t => {
 	const registry = new Registry({start: 'atom'})
 
-	t.deepEqual(registry.evaluate(), ['start', ['choice', ['concat', [['atom', 'atom']]]]])
+	t.deepEqual(registry.evaluate(), [Symbol.for('start'), [Symbol.for('choice'), [Symbol.for('concat'), [[Symbol.for('atom'), 'atom']]]]])
 })

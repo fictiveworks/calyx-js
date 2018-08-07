@@ -7,7 +7,7 @@ class Choices {
 
   evaluate() {
     const element = this.collection[Math.floor(Math.random() * this.collection.length)];
-    return ['choice', element.evaluate()]
+    return [Symbol.for('choice'), element.evaluate()]
   }
 }
 

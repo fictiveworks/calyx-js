@@ -22,7 +22,7 @@ class Registry {
   }
 
   evaluate(startSymbol="start") {
-    return [startSymbol, this.expand(startSymbol).evaluate()]
+    return [Symbol.for(startSymbol), this.expand(startSymbol).evaluate()]
   }
 }
 

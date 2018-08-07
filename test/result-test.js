@@ -1,11 +1,23 @@
-import test from 'ava';
+import test from 'ava'
+import result from '../src/result'
 
-test('foo', t => {
-	t.pass();
-});
+test('wraps expression tree', t => {
+	const tree = result([Symbol.for('root'), [Symbol.for('leaf'), 'atom']]).tree
 
-test('bar', async t => {
-	const bar = Promise.resolve('bar');
+	t.deepEqual(tree, [Symbol.for('root'), [Symbol.for('leaf'), 'atom']])
+})
 
-	t.is(await bar, 'bar');
-});
+test('expression tree is immutable', t => {
+	const tree = result([Symbol.for('root'), [Symbol.for('leaf'), 'atom']]).tree
+
+	const mutateTree = () => tree.push([Symbol.for('leaf'), 'atom'])
+
+	t.throws(mutateTree)
+})
+
+test('flattens expression tree to string', t => {
+	const expr = [Symbol.for('root'), [Symbol.for('branch'), [Symbol.for('leaf'), 'one'], [Symbol.for('leaf'), ' '], [Symbol.for('leaf'), 'two']]]
+	const text = result(expr).text
+
+	t.is(text, 'one two')
+})

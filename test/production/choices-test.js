@@ -11,5 +11,5 @@ import choices from '../../src/production/choices'
 test('construct choices from list of atoms', t => {
 	const production = choices(['atom', 'atom', 'atom'])
 
-	t.deepEqual(production.evaluate(), ['choice', ['concat', [['atom', 'atom']]]])
+	t.deepEqual(production.evaluate(), [Symbol.for('choice'), [Symbol.for('concat'), [[Symbol.for('atom'), 'atom']]]])
 })
