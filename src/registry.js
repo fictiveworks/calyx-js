@@ -3,6 +3,7 @@ import Rule from './rule'
 class Registry {
   constructor(rules={}) {
     this.rules = {}
+    this.memos = {}
 
     for (const key in rules) {
       this.rules[key] = new Rule(key, rules[key])
@@ -23,6 +24,15 @@ class Registry {
     if (!expansion) throw new Error(`UndefinedRule: ${symbol}`)
 
     return expansion
+  }
+
+  evaluateMemo(symbol) {
+    if (!this.memos[symbol]) this.memos[symbol] = this.expand(symbol).evaluate()
+    return this.memos[symbol]
+  }
+
+  expandUnique(symbol) {
+
   }
 
   evaluate(startSymbol="start") {
