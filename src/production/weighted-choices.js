@@ -7,6 +7,10 @@ class WeightedChoices {
     this.rng = rng
   }
 
+  get length() {
+    return this.productions.length
+  }
+
   evaluate() {
     let maxIndex = 0
     let maxWeight = 0

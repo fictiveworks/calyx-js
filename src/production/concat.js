@@ -2,6 +2,7 @@ import nonTerminal from './non-terminal'
 import terminal from './terminal'
 import expression from './expression'
 import memo from './memo'
+import unique from './unique'
 
 class Concat {
   constructor(expansion) {
@@ -34,7 +35,7 @@ function concat(production, registry) {
       if (expr[0][0] == MEMO_SIGIL) {
         rule = memo(fragment.slice(1, fragment.length-1), registry)
       } else if (expr[0][0] == UNIQUE_SIGIL) {
-        // rule = unique()
+        rule = unique(fragment.slice(1, fragment.length-1), registry)
       } else {
         rule = nonTerminal(expr[0], registry)
       }

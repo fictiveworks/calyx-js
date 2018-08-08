@@ -5,6 +5,10 @@ class Choices {
     this.collection = collection
   }
 
+  get length() {
+    return this.collection.length
+  }
+
   evaluate() {
     const element = this.collection[Math.floor(Math.random() * this.collection.length)];
     return [Symbol.for('choice'), element.evaluate()]

@@ -15,6 +15,10 @@ class Rule {
     this.production = parseProduction(production)
   }
 
+  get length() {
+    return this.production.length
+  }
+
   evaluate() {
     return this.production.evaluate()
   }

@@ -4,6 +4,7 @@ class Registry {
   constructor(rules={}) {
     this.rules = {}
     this.memos = {}
+    this.uniques = {}
 
     for (const key in rules) {
       this.rules[key] = new Rule(key, rules[key])
@@ -31,8 +32,26 @@ class Registry {
     return this.memos[symbol]
   }
 
-  expandUnique(symbol) {
+  evaluateUnique(symbol) {
+    let pending = true
+    let result
+    if (!this.uniques[symbol]) this.uniques[symbol] = []
 
+    while (pending) {
+      if (this.uniques[symbol].length == this.rules[symbol].length) {
+        this.uniques[symbol] = []
+        pending = false
+      }
+
+      result = this.expand(symbol).evaluate()
+
+      if (!this.uniques[symbol].includes(JSON.stringify(result))) {
+        this.uniques[symbol].push(JSON.stringify(result))
+        pending = false
+      }
+    }
+
+    return result
   }
 
   evaluate(startSymbol="start") {
