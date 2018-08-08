@@ -1,9 +1,4 @@
-const flattenTree = tree => tree.reduce(
-  (list, node) => list.concat(Array.isArray(node) ? flattenTree(node) : node),
-  []
-);
-
-const discardSymbols = entry => typeof entry != "symbol"
+import { flattenTree, discardSymbols } from "./utils"
 
 class Result {
   constructor(expression) {

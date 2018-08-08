@@ -13,6 +13,10 @@ class Registry {
     this.rules = Object.assign(this.rules, registry.rules)
   }
 
+  transform(name, value) {
+    return (value[name]) ? value[name]() : value
+  }
+
   expand(symbol) {
     const expansion = this.rules[symbol]
 
