@@ -1,4 +1,5 @@
 import Registry from "./registry"
+import result from "./result"
 
 class Grammar {
   constructor(registry) {
@@ -18,7 +19,7 @@ const grammar = (rules) => {
   }
 
   instance.generate = (context={}) => {
-    console.log(Object.assign(rules, context))
+    return result(registry.evaluate())
   }
 
   return instance
