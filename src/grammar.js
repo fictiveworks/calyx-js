@@ -40,7 +40,7 @@ const grammar = (rules) => {
 
   instance.generate = (symbolOpt, contextOpt) => {
     const { symbol, context } = mapDefaultArgs([symbolOpt, contextOpt])
-    return result(registry.evaluate(symbol))
+    return result(registry.evaluate(symbol, context))
   }
 
   return instance

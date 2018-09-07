@@ -1,18 +1,18 @@
 import choices from './production/choices'
 import weightedChoices from './production/weighted-choices'
 
-function parseProduction(production) {
+function rule(name, production, registry) {
   if (production.length == undefined) {
-    return weightedChoices(production)
+    return new Rule(name, weightedChoices(production, registry))
   } else {
-    return choices(production)
+    return new Rule(name, choices(production, registry))
   }
 }
 
 class Rule {
   constructor(name, production) {
     this.name = name
-    this.production = parseProduction(production)
+    this.production = production
   }
 
   get length() {
@@ -24,4 +24,4 @@ class Rule {
   }
 }
 
-export default Rule
+export default rule

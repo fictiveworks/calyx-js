@@ -1,4 +1,4 @@
-import Rule from './rule'
+import rule from './rule'
 
 class Registry {
   constructor(rules={}) {
@@ -8,7 +8,7 @@ class Registry {
     this.context = {}
 
     for (const key in rules) {
-      this.rules[key] = new Rule(key, rules[key])
+      this.rules[key] = rule(key, rules[key], this)
     }
   }
 
@@ -27,7 +27,7 @@ class Registry {
   }
 
   expand(symbol) {
-    const expansion = this.rules[symbol] || this.context[key]
+    const expansion = this.rules[symbol] || this.context[symbol]
 
     if (!expansion) throw new Error(`UndefinedRule: ${symbol}`)
 
@@ -69,7 +69,7 @@ class Registry {
         throw new Error(`DuplicateRule: ${key}`)
       }
 
-      this.context[key] = new Rule(key, context[key])
+      this.context[key] = rule(key, context[key], this)
     }
 
     return [Symbol.for(symbol), this.expand(symbol).evaluate()]

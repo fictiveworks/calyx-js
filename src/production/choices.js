@@ -15,12 +15,12 @@ class Choices {
   }
 }
 
-function choices(production) {
+function choices(production, registry) {
   const productions = (typeof production == 'string') ? [production] : production
 
   const choices = productions.map((choice) => {
     if (typeof choice == 'string') {
-      return concat(choice)
+      return concat(choice, registry)
     }
   })
 
