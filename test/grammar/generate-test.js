@@ -1,11 +1,15 @@
 import test from 'ava'
 import calyx from '../../src/calyx'
 
-test.skip('generate with explicit start symbol', t => {
-  const grammar = calyx.grammar({
-    alt_start: 'alt_start',
-    start: 'start'
-  })
+const grammar = calyx.grammar({
+  alt_start: 'alt_start',
+  start: 'start'
+})
 
-  t.is(grammar.generate('alt_start'), 'alt_start')
+test('generate with default start symbol', t => {
+  t.is(grammar.generate().text, 'start')
+});
+
+test('generate with specified start symbol', t => {
+  t.is(grammar.generate('alt_start').text, 'alt_start')
 });

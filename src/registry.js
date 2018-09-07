@@ -5,10 +5,17 @@ class Registry {
     this.rules = {}
     this.memos = {}
     this.uniques = {}
+    this.context = {}
 
     for (const key in rules) {
       this.rules[key] = new Rule(key, rules[key])
     }
+  }
+
+  reset() {
+    this.memos = {}
+    this.uniques = {}
+    this.context = {}
   }
 
   combine(registry) {
@@ -20,7 +27,7 @@ class Registry {
   }
 
   expand(symbol) {
-    const expansion = this.rules[symbol]
+    const expansion = this.rules[symbol] || this.context[key]
 
     if (!expansion) throw new Error(`UndefinedRule: ${symbol}`)
 
@@ -54,8 +61,18 @@ class Registry {
     return result
   }
 
-  evaluate(startSymbol="start") {
-    return [Symbol.for(startSymbol), this.expand(startSymbol).evaluate()]
+  evaluate(symbol="start", context={}) {
+    this.reset()
+
+    for (const key in context) {
+      if (this.rules[key]) {
+        throw new Error(`DuplicateRule: ${key}`)
+      }
+
+      this.context[key] = new Rule(key, context[key])
+    }
+
+    return [Symbol.for(symbol), this.expand(symbol).evaluate()]
   }
 }
 
