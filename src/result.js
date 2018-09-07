@@ -1,4 +1,4 @@
-import { flattenTree, discardSymbols } from "./utils"
+import { flattenTree } from "./utils"
 
 class Result {
   constructor(expression) {
@@ -10,7 +10,7 @@ class Result {
   }
 
   get text() {
-    return flattenTree(this.expression).filter(discardSymbols).join('')
+    return flattenTree(this.expression).join('')
   }
 }
 

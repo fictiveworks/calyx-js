@@ -1,4 +1,4 @@
-import { flattenTree, discardSymbols } from "../utils"
+import { flattenTree } from "../utils"
 
 class Expression {
   constructor(production, funcs, registry) {
@@ -8,7 +8,7 @@ class Expression {
   }
 
   evaluate() {
-    const expansion = flattenTree(this.production.evaluate()).filter(discardSymbols).join('')
+    const expansion = flattenTree(this.production.evaluate()).join('')
     const result = this.funcs.reduce((value, func) => this.registry.transform(func, value), expansion)
     return [Symbol.for("expression"), result]
   }

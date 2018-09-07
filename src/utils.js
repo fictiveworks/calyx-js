@@ -1,4 +1,6 @@
-export const flattenTree = tree => tree.reduce(
+export const flattenTree = tree => flattenTreeTail(tree).filter(discardSymbols)
+
+export const flattenTreeTail = tree => tree.reduce(
   (list, node) => list.concat(Array.isArray(node) ? flattenTree(node) : node),
   []
 );
