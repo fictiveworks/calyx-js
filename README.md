@@ -1,6 +1,6 @@
 # Calyx
 
-A JavaScript port of [Calyx](https://rubygems.org/gem/calyx), a Ruby based generative grammar tool.
+A JavaScript port of [Calyx](https://github.com/maetl/calyx), a Ruby based generative grammar tool.
 
 [![Build Status](https://img.shields.io/travis/maetl/calyx-js.svg)](https://travis-ci.org/maetl/calyx-js)
 
@@ -51,7 +51,7 @@ result.tree
 
 ## Example Usage
 
-Every grammar feature documented for the [Ruby version](https://rubygems.org/gem/calyx) should work here (if not, please raise a bug report).
+Every grammar feature documented for the [Ruby version](https://github.com/maetl/calyx) should work here (if not, please raise a bug report).
 
 The main difference between the Ruby and JavaScript implementations is the class-based Ruby DSL for defining grammar rules. This doesn’t exist in the JavaScript version which only supports definitions in the object-literal format with string keys for rule names.
 
