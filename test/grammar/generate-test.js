@@ -1,42 +1,42 @@
 import test from 'ava'
-import calyx from '../../src/calyx'
+import grammar from '../../src/grammar'
 
 test('generate with default start symbol', t => {
-  const grammar = calyx.grammar({
+  const g = grammar({
     start: 'start'
   })
 
-  t.is(grammar.generate().text, 'start')
+  t.is(g.generate().text, 'start')
 })
 
 test('generate with specified start symbol', t => {
-  const grammar = calyx.grammar({
+  const g = grammar({
     alt_start: 'alt_start'
   })
 
-  t.is(grammar.generate('alt_start').text, 'alt_start')
+  t.is(g.generate('alt_start').text, 'alt_start')
 })
 
 test('generate with context', t => {
-  const grammar = calyx.grammar({
+  const g = grammar({
     start: '{hello}'
   })
 
-  t.is(grammar.generate({hello: 'Hello!'}).text, 'Hello!')
+  t.is(g.generate({hello: 'Hello!'}).text, 'Hello!')
 })
 
 test('generate with symbol and context', t => {
-  const grammar = calyx.grammar({
+  const g = grammar({
     alt_start: '{hello}'
   })
 
-  t.is(grammar.generate('alt_start', {hello: 'Hello!'}).text, 'Hello!')
+  t.is(g.generate('alt_start', {hello: 'Hello!'}).text, 'Hello!')
 })
 
 test('generate with symbol and context args flipped', t => {
-  const grammar = calyx.grammar({
+  const g = grammar({
     alt_start: '{hello}'
   })
 
-  t.is(grammar.generate({hello: 'Hello!'}, 'alt_start').text, 'Hello!')
+  t.is(g.generate({hello: 'Hello!'}, 'alt_start').text, 'Hello!')
 })

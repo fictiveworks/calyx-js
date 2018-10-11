@@ -1,12 +1,12 @@
 import test from 'ava'
-import calyx from '../../src/calyx'
+import grammar from '../../src/grammar'
 
 test('substitutes a chain of rules with symbols', t => {
-  const grammar = calyx.grammar({
+  const g = grammar({
     start: '{rule_symbol}',
     rule_symbol: '{terminal_symbol}',
     terminal_symbol: 'OK'
   })
 
-  t.is(grammar.generate().text, 'OK')
+  t.is(g.generate().text, 'OK')
 });

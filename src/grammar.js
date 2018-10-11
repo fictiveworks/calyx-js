@@ -1,16 +1,6 @@
 import Registry from "./registry"
 import result from "./result"
 
-class Grammar {
-  constructor(registry) {
-    this.registry = registry
-  }
-
-  generate() {
-    this.registry.evaluate()
-  }
-}
-
 const mapDefaultArgs = (args) => {
   let symbol = "start"
   let context = {}
