@@ -1,6 +1,6 @@
 {
   "name": "calyx",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "description": "JavaScript port of https://rubygems.org/gem/calyx",
   "repository": "github:maetl/calyx-js",
   "main": "index.js",
