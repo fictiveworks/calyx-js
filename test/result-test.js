@@ -21,3 +21,10 @@ test('flattens expression tree to string', t => {
 
 	t.is(text, 'one two')
 })
+
+test('coerces to string automatically', t => {
+	const expr = [Symbol.for('root'), [Symbol.for('branch'), [Symbol.for('leaf'), 'one'], [Symbol.for('leaf'), ' '], [Symbol.for('leaf'), 'two']]]
+	const output = result(expr)
+
+	t.is(`${output}`, output.text)
+})

@@ -10,6 +10,10 @@ class Result {
   }
 
   get text() {
+    return this.toString()
+  }
+
+  toString() {
     return flattenTree(this.expression).join('')
   }
 }
