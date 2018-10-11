@@ -2,7 +2,10 @@
 
 A JavaScript port of [Calyx](https://github.com/maetl/calyx), a Ruby based generative grammar tool.
 
-[![Build Status](https://img.shields.io/travis/maetl/calyx-js.svg)](https://travis-ci.org/maetl/calyx-js)
+## Status
+
+[![npm](https://img.shields.io/npm/v/calyx.svg)](https://npmjs.org/package/calyx)
+[![travis](https://img.shields.io/travis/maetl/calyx-js.svg)](https://travis-ci.org/maetl/calyx-js)
 
 ## Install
 
