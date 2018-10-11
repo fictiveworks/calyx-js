@@ -3,9 +3,9 @@
   "version": "0.7.0",
   "description": "JavaScript port of https://rubygems.org/gem/calyx",
   "repository": "github:maetl/calyx-js",
-  "main": "dist/calyx.cjs.js",
-  "module": "dist/calyx.esm.js",
-  "browser": "dist/calyx.iife.js",
+  "main": "index.js",
+  "module": "src/calyx.js",
+  "browser": "calyx.js",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
@@ -19,7 +19,9 @@
     "rollup": "^0.63.4"
   },
   "files": [
-    "dist"
+    "calyx.js",
+    "index.js",
+    "src"
   ],
   "ava": {
     "require": [
