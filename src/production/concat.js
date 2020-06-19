@@ -33,9 +33,9 @@ function concat(production, registry) {
       let rule
 
       if (expr[0][0] == MEMO_SIGIL) {
-        rule = memo(fragment.slice(1, fragment.length-1), registry)
+        rule = memo(expr[0].slice(1, fragment.length-1), registry)
       } else if (expr[0][0] == UNIQUE_SIGIL) {
-        rule = unique(fragment.slice(1, fragment.length-1), registry)
+        rule = unique(expr[0].slice(1, fragment.length-1), registry)
       } else {
         rule = nonTerminal(expr[0], registry)
       }
