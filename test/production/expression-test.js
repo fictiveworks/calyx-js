@@ -1,7 +1,7 @@
 import test from 'ava'
-import Registry from '../../src/registry'
-import expression from '../../src/production/expression'
-import terminal from '../../src/production/terminal'
+import Registry from '../../src/registry.js'
+import expression from '../../src/production/expression.js'
+import terminal from '../../src/production/terminal.js'
 
 const atom = terminal('hello')
 const registry = new Registry()

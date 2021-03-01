@@ -1,5 +1,5 @@
-import Registry from "./registry"
-import result from "./result"
+import Registry from "./registry.js"
+import result from "./result.js"
 
 const mapDefaultArgs = (args) => {
   let symbol = "start"
@@ -34,6 +34,10 @@ const grammar = (rules) => {
   }
 
   return instance
+}
+
+grammar.include = mixins => {
+  console.log(mixins)
 }
 
 export default grammar

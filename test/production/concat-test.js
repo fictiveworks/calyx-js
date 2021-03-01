@@ -1,6 +1,6 @@
 import test from "ava"
-import Registry from "../../src/registry"
-import concat from "../../src/production/concat"
+import Registry from "../../src/registry.js"
+import concat from "../../src/production/concat.js"
 
 test("treats input with no delimiters as a concatenated production with a single atom", t => {
 	const production = concat("one two three", new Registry())

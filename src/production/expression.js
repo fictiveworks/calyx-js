@@ -1,4 +1,4 @@
-import { flattenTree } from "../utils"
+import { flattenTree } from "../utils.js"
 
 class Expression {
   constructor(production, funcs, registry) {

@@ -1,8 +1,8 @@
-import nonTerminal from './non-terminal'
-import terminal from './terminal'
-import expression from './expression'
-import memo from './memo'
-import unique from './unique'
+import nonTerminal from './non-terminal.js'
+import terminal from './terminal.js'
+import expression from './expression.js'
+import memo from './memo.js'
+import unique from './unique.js'
 
 class Concat {
   constructor(expansion) {

@@ -1,5 +1,5 @@
 import test from 'ava'
-import grammar from '../../src/grammar'
+import grammar from '../../src/grammar.js'
 
 test('context with values', t => {
   const g = grammar({

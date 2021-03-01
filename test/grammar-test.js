@@ -1,7 +1,15 @@
 import test from 'ava'
-import grammar from '../src/grammar'
+import grammar from '../src/grammar.js'
 
 test('grammar with start rule', t => {
   const g = grammar({start: "Hello."})
   t.is(g.generate().text, "Hello.")
 })
+
+test('grammar with separator in rule', t => {
+  const g = grammar({
+    "start": "A can of {tomato_soup}",
+    "tomato_soup": "tomato soup"
+  })
+  t.is(g.generate().text, "A can of tomato soup")
+});

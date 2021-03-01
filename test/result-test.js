@@ -1,5 +1,5 @@
 import test from 'ava'
-import result from '../src/result'
+import result from '../src/result.js'
 
 test('wraps expression tree', t => {
 	const tree = result([Symbol.for('root'), [Symbol.for('leaf'), 'atom']]).tree

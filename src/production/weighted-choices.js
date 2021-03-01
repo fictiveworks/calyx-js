@@ -1,4 +1,4 @@
-import concat from './concat'
+import concat from './concat.js'
 
 class WeightedChoices {
   constructor(productions, weights, rng) {

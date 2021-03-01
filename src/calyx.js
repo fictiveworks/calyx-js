@@ -1,4 +1,4 @@
-import grammar from "./grammar"
+import grammar from "./grammar.js"
 
 export default {
   grammar

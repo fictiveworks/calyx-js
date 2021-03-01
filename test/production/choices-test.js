@@ -1,5 +1,5 @@
 import test from 'ava'
-import choices from '../../src/production/choices'
+import choices from '../../src/production/choices.js'
 
 // TODO: result tree for this use case is undefined in the Ruby implementation
 // test('construct choices from single atom', t => {

@@ -1,6 +1,6 @@
 import test from 'ava'
-import Registry from '../../src/registry'
-import memo from '../../src/production/memo'
+import Registry from '../../src/registry.js'
+import memo from '../../src/production/memo.js'
 
 // TODO: this can be replaced once the registry supports injectable rng options
 const stubRand = () => 0.1

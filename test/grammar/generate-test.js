@@ -1,5 +1,5 @@
 import test from 'ava'
-import grammar from '../../src/grammar'
+import grammar from '../../src/grammar.js'
 
 test('generate with default start symbol', t => {
   const g = grammar({

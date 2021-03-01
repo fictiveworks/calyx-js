@@ -1,5 +1,5 @@
-import choices from './production/choices'
-import weightedChoices from './production/weighted-choices'
+import choices from './production/choices.js'
+import weightedChoices from './production/weighted-choices.js'
 
 function rule(name, production, registry) {
   if (production.length == undefined) {

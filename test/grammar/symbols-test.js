@@ -1,5 +1,5 @@
 import test from 'ava'
-import grammar from '../../src/grammar'
+import grammar from '../../src/grammar.js'
 
 test('substitutes a chain of rules with symbols', t => {
   const g = grammar({

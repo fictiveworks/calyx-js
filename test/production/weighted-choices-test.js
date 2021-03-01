@@ -1,5 +1,5 @@
 import test from 'ava'
-import weightedChoices from '../../src/production/weighted-choices'
+import weightedChoices from '../../src/production/weighted-choices.js'
 
 const rng = () => 0.1
 
@@ -12,7 +12,7 @@ test('selects rules with a weighted choice', t => {
 test('raises error if weighted choices do not sum to 1', t => {
   const production = () => weightedChoices({'10%': 0.1, '70%': 0.7}, rng)
 
-	t.throws(production, Error, 'Weights must sum to 1')
+	t.throws(production, {instanceOf: Error}, 'Weights must sum to 1')
 })
 
 test('selects rules with integer weights', t => {

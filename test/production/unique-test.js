@@ -1,6 +1,6 @@
 import test from 'ava'
-import Registry from '../../src/registry'
-import unique from '../../src/production/unique'
+import Registry from '../../src/registry.js'
+import unique from '../../src/production/unique.js'
 
 test('unique results never repeat in a sequence', t => {
   const production = unique("cycle", new Registry({cycle: ['a','b','c']}))
