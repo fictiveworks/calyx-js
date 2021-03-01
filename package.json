@@ -1,6 +1,6 @@
 {
   "name": "calyx",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "JavaScript port of https://rubygems.org/gem/calyx",
   "repository": "github:fictive-io/calyx",
   "type": "module",
