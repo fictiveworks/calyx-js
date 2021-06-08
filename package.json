@@ -1,8 +1,8 @@
 {
   "name": "calyx",
-  "version": "0.11.0",
-  "description": "JavaScript port of https://rubygems.org/gem/calyx",
-  "repository": "github:fictive-io/calyx",
+  "version": "0.12.0",
+  "description": "Generative grammars for creative coding",
+  "repository": "github:fictiveworks/calyx",
   "type": "module",
   "exports": "src/calyx.js",
   "scripts": {
