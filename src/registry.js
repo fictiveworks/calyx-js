@@ -1,4 +1,5 @@
 import rule from './rule.js'
+import Modifiers from './modifiers.js'
 
 class Registry {
   constructor(rules={}) {
@@ -23,6 +24,9 @@ class Registry {
   }
 
   transform(name, value) {
+    // TODO: should this throw an error if modifier does not exist?
+    if (Modifiers[name]) return Modifiers[name](value)
+    // Still using default string methods so tests continue to pass
     return (value[name]) ? value[name]() : value
   }
 

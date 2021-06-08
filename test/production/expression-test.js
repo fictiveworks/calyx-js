@@ -13,13 +13,13 @@ test('evaluates a value', t => {
 })
 
 test('evaluates a value with modifier', t => {
-	const production = expression(atom, ['toUpperCase'], registry)
+	const production = expression(atom, ['upper'], registry)
 
   t.deepEqual(production.evaluate(), [Symbol.for("expression"), "HELLO"])
 })
 
 test('evaluates a value with modifier chain', t => {
-	const production = expression(atom, ['toUpperCase', 'toLowerCase'], registry)
+	const production = expression(atom, ['upper', 'lower'], registry)
 
   t.deepEqual(production.evaluate(), [Symbol.for("expression"), "hello"])
 })

@@ -14,7 +14,7 @@ test('substitute multiple rules in a string', t => {
 test('calls formatting function in a substitution', t => {
   const g = grammar({
     start: '{hello_world}.',
-    hello_world: '{hello.toUpperCase} world',
+    hello_world: '{hello.upper} world',
     hello: 'hello'
   })
 
@@ -24,7 +24,7 @@ test('calls formatting function in a substitution', t => {
 test('calls chained formatting functions in a substitution', t => {
   const g = grammar({
     start: '{hello_world}.',
-    hello_world: '{hello.toUpperCase.trim}',
+    hello_world: '{hello.upper.trim}',
     hello: 'hello world     '
   })
 
