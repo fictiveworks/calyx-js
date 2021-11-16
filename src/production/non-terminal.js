@@ -4,8 +4,11 @@ class NonTerminal {
     this.registry = registry
   }
 
-  evaluate() {
-    return [Symbol.for(this.symbol), this.registry.expand(this.symbol).evaluate()]
+  evaluate(options) {
+    return [
+      Symbol.for(this.symbol),
+      this.registry.expand(this.symbol).evaluate(options)
+    ]
   }
 }
 

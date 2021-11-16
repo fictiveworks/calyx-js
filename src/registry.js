@@ -1,7 +1,9 @@
 import rule from './rule.js'
+import Options from './options.js';
 
 class Registry {
-  constructor(rules={}) {
+  constructor(options={}, rules={}) {
+    this.options = Object.assign(Options, options);
     this.rules = {}
     this.memos = {}
     this.uniques = {}
@@ -35,7 +37,9 @@ class Registry {
   }
 
   evaluateMemo(symbol) {
-    if (!this.memos[symbol]) this.memos[symbol] = this.expand(symbol).evaluate()
+    if (!this.memos[symbol]) {
+      this.memos[symbol] = this.expand(symbol).evaluate(this.options)
+    }
     return this.memos[symbol]
   }
 
@@ -50,7 +54,7 @@ class Registry {
         pending = false
       }
 
-      result = this.expand(symbol).evaluate()
+      result = this.expand(symbol).evaluate(this.options)
 
       if (!this.uniques[symbol].includes(JSON.stringify(result))) {
         this.uniques[symbol].push(JSON.stringify(result))
@@ -72,7 +76,7 @@ class Registry {
       this.context[key] = rule(key, context[key], this)
     }
 
-    return [Symbol.for(symbol), this.expand(symbol).evaluate()]
+    return [Symbol.for(symbol), this.expand(symbol).evaluate(this.options)]
   }
 }
 

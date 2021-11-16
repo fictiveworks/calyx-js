@@ -9,9 +9,9 @@ class Concat {
     this.expansion = expansion
   }
 
-  evaluate() {
+  evaluate(options) {
     const concat = this.expansion.reduce((accumulator, production) => {
-      accumulator.push(production.evaluate())
+      accumulator.push(production.evaluate(options))
       return accumulator
     }, [])
 

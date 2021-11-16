@@ -21,11 +21,15 @@ const mapDefaultArgs = (args) => {
   }
 }
 
-const grammar = (rules) => {
-  const registry = new Registry(rules)
+const grammar = (rules, options={}) => {
+  const registry = new Registry(options, rules)
 
   const instance = (_rules) => {
-    return grammar(Object.assign(rules, _rules))
+    return grammar(Object.assign(rules, _rules), options)
+  }
+
+  instance.options = (options) => {
+    // registry.mergeOptions(options);
   }
 
   instance.generate = (symbolOpt, contextOpt) => {

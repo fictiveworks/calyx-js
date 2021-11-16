@@ -1,4 +1,5 @@
 import test from 'ava'
+import Options from '../../src/options.js'
 import weightedChoices from '../../src/production/weighted-choices.js'
 
 const rng = () => 0.1
@@ -6,7 +7,7 @@ const rng = () => 0.1
 test('selects rules with a weighted choice', t => {
   const production = weightedChoices({'20%': 0.2, '80%': 0.8}, rng)
 
-	t.deepEqual(production.evaluate(), [Symbol.for('weighted_choice'), [Symbol.for('concat'), [[Symbol.for('atom'), '80%']]]])
+	t.deepEqual(production.evaluate({rng}), [Symbol.for('weighted_choice'), [Symbol.for('concat'), [[Symbol.for('atom'), '80%']]]])
 })
 
 test('raises error if weighted choices do not sum to 1', t => {
@@ -18,5 +19,5 @@ test('raises error if weighted choices do not sum to 1', t => {
 test('selects rules with integer weights', t => {
   const production = weightedChoices({'20%': 20, '80%': 80}, rng)
 
-	t.deepEqual(production.evaluate(), [Symbol.for('weighted_choice'), [Symbol.for('concat'), [[Symbol.for('atom'), '80%']]]])
+	t.deepEqual(production.evaluate({rng}), [Symbol.for('weighted_choice'), [Symbol.for('concat'), [[Symbol.for('atom'), '80%']]]])
 })

@@ -4,7 +4,7 @@ class Memo {
     this.registry = registry
   }
 
-  evaluate() {
+  evaluate(options) {
     return [Symbol.for(this.symbol), this.registry.evaluateMemo(this.symbol)]
   }
 }

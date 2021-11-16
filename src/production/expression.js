@@ -7,8 +7,8 @@ class Expression {
     this.registry = registry
   }
 
-  evaluate() {
-    const expansion = flattenTree(this.production.evaluate()).join('')
+  evaluate(options) {
+    const expansion = flattenTree(this.production.evaluate(options)).join('')
     const result = this.funcs.reduce((value, func) => this.registry.transform(func, value), expansion)
     return [Symbol.for("expression"), result]
   }

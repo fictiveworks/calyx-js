@@ -19,8 +19,8 @@ class Rule {
     return this.production.length
   }
 
-  evaluate() {
-    return this.production.evaluate()
+  evaluate(options) {
+    return this.production.evaluate(options)
   }
 }
 

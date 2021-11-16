@@ -9,9 +9,13 @@ class Choices {
     return this.collection.length
   }
 
-  evaluate() {
-    const element = this.collection[Math.floor(Math.random() * this.collection.length)];
-    return [Symbol.for('choice'), element.evaluate()]
+  evaluate(options) {
+    const element = this.collection[Math.floor(options.rng() * this.collection.length)];
+
+    return [
+      Symbol.for('choice'),
+      element.evaluate(options)
+    ]
   }
 }
 

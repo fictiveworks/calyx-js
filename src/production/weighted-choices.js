@@ -11,7 +11,7 @@ class WeightedChoices {
     return this.productions.length
   }
 
-  evaluate() {
+  evaluate(options) {
     let maxIndex = 0
     let maxWeight = 0
     let maxRoll = 0
@@ -27,7 +27,10 @@ class WeightedChoices {
       }
     }
 
-    return [Symbol.for("weighted_choice"), this.productions[maxIndex].evaluate()]
+    return [
+      Symbol.for("weighted_choice"),
+      this.productions[maxIndex].evaluate(options)
+    ]
   }
 }
 

@@ -4,8 +4,11 @@ class Unique {
     this.registry = registry
   }
 
-  evaluate() {
-    return [Symbol.for(this.symbol), this.registry.evaluateUnique(this.symbol)]
+  evaluate(options) {
+    return [
+      Symbol.for(this.symbol),
+      this.registry.evaluateUnique(this.symbol)
+    ]
   }
 }
 

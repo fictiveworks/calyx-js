@@ -3,7 +3,7 @@ class Terminal {
     this.atom = atom
   }
 
-  evaluate() {
+  evaluate(options) {
     return [Symbol.for('atom'), this.atom]
   }
 }
