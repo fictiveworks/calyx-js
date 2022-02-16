@@ -5,7 +5,7 @@ A JavaScript port of [Calyx](https://github.com/maetl/calyx), a Ruby based gener
 ## Status
 
 [![npm](https://img.shields.io/npm/v/calyx.svg)](https://npmjs.org/package/calyx)
-[![travis](https://img.shields.io/github/workflow/status/fictiveworks/calyx/Node.js%20CI)
+[![github](https://img.shields.io/github/workflow/status/fictiveworks/calyx/Node.js%20CI)](https://github.com/fictiveworks/calyx/actions)
 
 ## Install
 
