@@ -1,10 +1,9 @@
 import concat from './concat.js'
 
 class WeightedChoices {
-  constructor(productions, weights, rng) {
+  constructor(productions, weights) {
     this.productions = productions
     this.weights = weights
-    this.rng = rng
   }
 
   get length() {
@@ -18,7 +17,7 @@ class WeightedChoices {
 
     for (let i=0; i<this.weights.length; i++) {
       let currentWeight = this.weights[i]
-      let currentRoll =  Math.pow(this.rng(), 1.0 / currentWeight)
+      let currentRoll =  Math.pow(options.rng(), 1.0 / currentWeight)
 
       if (currentRoll > maxRoll) {
         maxRoll = currentRoll
@@ -34,8 +33,11 @@ class WeightedChoices {
   }
 }
 
-function weightedChoices(rules, rng) {
-  const productions = Object.keys(rules).map((rule) => concat(rule))
+function weightedChoices(rules, registry) {
+  const productions = Object.keys(rules).map((rule) => {
+    return concat(rule, registry)
+  })
+
   const weights = Object.values(rules)
   const weightsTotal = weights.reduce((a,b) => a + b)
 
@@ -48,7 +50,7 @@ function weightedChoices(rules, rng) {
     normalizedWeights = weights
   }
 
-  return new WeightedChoices(productions, normalizedWeights, rng)
+  return new WeightedChoices(productions, normalizedWeights)
 }
 
 export default weightedChoices

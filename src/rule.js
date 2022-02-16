@@ -3,7 +3,7 @@ import weightedChoices from './production/weighted-choices.js'
 
 function rule(name, production, registry) {
   if (production.length == undefined) {
-    return new Rule(name, weightedChoices(production, Math.random))
+    return new Rule(name, weightedChoices(production, registry))
   } else {
     return new Rule(name, choices(production, registry))
   }

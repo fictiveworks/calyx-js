@@ -14,13 +14,23 @@ test('grammar with separator in rule', t => {
   t.is(g.generate().text, "A can of tomato soup")
 });
 
-// test('grammar with weighted probabilities', t => {
-//   const g = grammar({
-//     "start": "A can of {contents}",
-//     "contents": {
-//       "tomato soup": 1,
-//       "baked beans": 2
-//     }
-//   })
-//   t.is(g.generate().text, "A can of tomato soup")
-// });
+test('grammar with weighted probabilities', t => {
+  const g = grammar({
+    "start": "A can of {contents}",
+    "contents": {
+      "tomato soup": 1
+    }
+  })
+  t.is(g.generate().text, "A can of tomato soup")
+});
+
+test('nested expansion in weighted probabilities', t => {
+  const g = grammar({
+    "start": "A can of {contents}",
+    "contents": {
+      "tomato {soup}": 1
+    },
+    "soup": "paste"
+  })
+  t.is(g.generate().text, "A can of tomato paste")
+});
