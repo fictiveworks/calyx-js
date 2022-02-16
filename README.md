@@ -81,4 +81,4 @@ console.log(company.text)
 
 ## License
 
-This package is copyright 2017-2018 Mark Rickerby and distributed freely under the terms of the MIT License. See the LICENSE file packaged with this software distribution.
+This package is copyright 2017-2022 Mark Rickerby and distributed freely under the terms of the MIT License. See the LICENSE file packaged with this software distribution.
