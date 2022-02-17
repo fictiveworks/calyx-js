@@ -1,7 +1,7 @@
-import test from 'ava'
-import PrefixTree from '../src/prefix-tree.js'
+import test from "ava";
+import PrefixTree from "../src/prefix-tree.js";
 
-test("longest common prefix of strings", t => {
+test("longest common prefix of strings", (t) => {
   const trie = new PrefixTree();
 
   t.is(trie.commonPrefix("a", "b"), "");
@@ -11,21 +11,21 @@ test("longest common prefix of strings", t => {
   t.is(trie.commonPrefix("abab", "abab"), "abab");
 });
 
-test("delete prefix", t => {
+test("delete prefix", (t) => {
   const string = "testing";
   const prefix = "te";
 
   t.is(string.substring(prefix.length, string.length), "sting");
 });
 
-test('insert single value', t => {
+test("insert single value", (t) => {
   const trie = new PrefixTree();
   trie.add("one", 0);
 
   t.is(trie.lookup("one").index, 0);
 });
 
-test("lookup with literal string value", t => {
+test("lookup with literal string value", (t) => {
   const trie = new PrefixTree();
   trie.add("test", 2);
   trie.add("team", 3);
@@ -35,7 +35,7 @@ test("lookup with literal string value", t => {
   t.falsy(trie.lookup("teal"));
 });
 
-test("lookup with leading wildcard", t => {
+test("lookup with leading wildcard", (t) => {
   const trie = new PrefixTree();
   trie.add("%es", 111);
 
@@ -45,7 +45,7 @@ test("lookup with leading wildcard", t => {
   t.falsy(trie.lookup("train"));
 });
 
-test("lookup with trailing wildcard", t => {
+test("lookup with trailing wildcard", (t) => {
   const trie = new PrefixTree();
   trie.add("te%", 222);
 
@@ -55,7 +55,7 @@ test("lookup with trailing wildcard", t => {
   t.falsy(trie.lookup("total"));
 });
 
-test("lookup with anchored wildcard", t => {
+test("lookup with anchored wildcard", (t) => {
   const trie = new PrefixTree();
   trie.add("te%s", 333);
 
@@ -66,7 +66,7 @@ test("lookup with anchored wildcard", t => {
   t.falsy(trie.lookup("team"));
 });
 
-test("lookup with catch all wildcard", t => {
+test("lookup with catch all wildcard", (t) => {
   const trie = new PrefixTree();
   trie.add("%", 444);
 
@@ -77,7 +77,7 @@ test("lookup with catch all wildcard", t => {
   t.is(trie.lookup("team").index, 444);
 });
 
-test("lookup with cascading wildcard", t => {
+test("lookup with cascading wildcard", (t) => {
   const trie = new PrefixTree();
   trie.add("%y", 555);
   trie.add("%s", 666);

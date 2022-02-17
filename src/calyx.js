@@ -1,5 +1,5 @@
-import grammar from "./grammar.js"
+import grammar from "./grammar.js";
 
 export default {
-  grammar
-}
+  grammar,
+};

@@ -1,59 +1,59 @@
-import nonTerminal from './non-terminal.js'
-import terminal from './terminal.js'
-import expression from './expression.js'
-import memo from './memo.js'
-import unique from './unique.js'
+import nonTerminal from "./non-terminal.js";
+import terminal from "./terminal.js";
+import expression from "./expression.js";
+import memo from "./memo.js";
+import unique from "./unique.js";
 
 class Concat {
   constructor(expansion) {
-    this.expansion = expansion
+    this.expansion = expansion;
   }
 
   evaluate(options) {
     const concat = this.expansion.reduce((accumulator, production) => {
-      accumulator.push(production.evaluate(options))
-      return accumulator
-    }, [])
+      accumulator.push(production.evaluate(options));
+      return accumulator;
+    }, []);
 
-    return [Symbol.for('concat'), concat]
+    return [Symbol.for("concat"), concat];
   }
 }
 
-const EXPRESSION_PATTERN = /(\{[A-Za-z0-9_@$\.]+\})/
-const START_TOKEN = '{'
-const END_TOKEN = '}'
-const DEREF_TOKEN = '.'
-const MEMO_SIGIL = '@'
-const UNIQUE_SIGIL = '$'
+const EXPRESSION_PATTERN = /(\{[A-Za-z0-9_@$\.]+\})/;
+const START_TOKEN = "{";
+const END_TOKEN = "}";
+const DEREF_TOKEN = ".";
+const MEMO_SIGIL = "@";
+const UNIQUE_SIGIL = "$";
 
 function concat(production, registry) {
   const expansion = production.split(EXPRESSION_PATTERN).map((fragment) => {
-    if (fragment[0] == START_TOKEN && fragment[fragment.length-1] == END_TOKEN) {
-      const expr = fragment.slice(1, fragment.length-1).split(DEREF_TOKEN)
-      let rule
+    if (
+      fragment[0] == START_TOKEN &&
+      fragment[fragment.length - 1] == END_TOKEN
+    ) {
+      const expr = fragment.slice(1, fragment.length - 1).split(DEREF_TOKEN);
+      let rule;
 
       if (expr[0][0] == MEMO_SIGIL) {
-        rule = memo(expr[0].slice(1, fragment.length-1), registry)
+        rule = memo(expr[0].slice(1, fragment.length - 1), registry);
       } else if (expr[0][0] == UNIQUE_SIGIL) {
-        rule = unique(expr[0].slice(1, fragment.length-1), registry)
+        rule = unique(expr[0].slice(1, fragment.length - 1), registry);
       } else {
-        rule = nonTerminal(expr[0], registry)
+        rule = nonTerminal(expr[0], registry);
       }
 
       if (expr.length > 1) {
-        return expression(rule, expr, registry)
+        return expression(rule, expr, registry);
       } else {
-        return rule
+        return rule;
       }
-
     } else {
-      return terminal(fragment)
+      return terminal(fragment);
     }
-  })
+  });
 
-  return new Concat(expansion)
+  return new Concat(expansion);
 }
 
-
-
-export default concat
+export default concat;

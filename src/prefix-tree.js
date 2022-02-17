@@ -55,7 +55,7 @@ class PrefixTree {
   }
 
   add(label, index) {
-    const parts = label.split(/(%)/).filter(p => p.length !== 0);
+    const parts = label.split(/(%)/).filter((p) => p.length !== 0);
     const partsCount = parts.length;
 
     if (partsCount > 3) {
@@ -65,7 +65,7 @@ class PrefixTree {
     let currentNode = this.root;
 
     for (const [i, part] of parts.entries()) {
-      const indexSlot = (i == partsCount - 1) ? index : null;
+      const indexSlot = i == partsCount - 1 ? index : null;
       const isWildcard = part == "%";
       let matchedPrefix = false;
       let nextNode = null;
@@ -81,15 +81,23 @@ class PrefixTree {
             // Current prefix matches the edge label exactly so we can continue
             // down the tree without mutating the current branch.
             nextNode = new IndexNode([], indexSlot);
-            currentNode.children.push(new LabeledEdge(nextNode, suffix, isWildcard))
+            currentNode.children.push(
+              new LabeledEdge(nextNode, suffix, isWildcard)
+            );
           } else {
             // We have a partial match on current edge so replace it with the
             // new prefix then rejoin the remaining suffix to the existing branch.
             edge.label = edge.label.substring(prefix.length, edge.label.length);
             nextNode = new IndexNode([], indexSlot);
             const adjoiningNode = new IndexNode([edge], null);
-            adjoiningNode.children.push(new LabeledEdge(nextNode, suffix, isWildcard))
-            currentNode.children[j] = new LabeledEdge(adjoiningNode, prefix, isWildcard);
+            adjoiningNode.children.push(
+              new LabeledEdge(nextNode, suffix, isWildcard)
+            );
+            currentNode.children[j] = new LabeledEdge(
+              adjoiningNode,
+              prefix,
+              isWildcard
+            );
           }
 
           currentNode = nextNode;
@@ -100,7 +108,11 @@ class PrefixTree {
       if (!matchedPrefix) {
         // No existing edges have a common prefix so push a new branch onto the
         // tree at the current level.
-        const nextEdge = new LabeledEdge(new IndexNode([], indexSlot), part, isWildcard);
+        const nextEdge = new LabeledEdge(
+          new IndexNode([], indexSlot),
+          part,
+          isWildcard
+        );
         currentNode.children.push(nextEdge);
         currentNode = nextEdge.node;
       }
@@ -132,7 +144,11 @@ class PrefixTree {
     let charsConsumed = 0;
     let charsCaptured = null;
 
-    while (currentNode != null && !currentNode.children.length == 0 && charsConsumed < labelLength) {
+    while (
+      currentNode != null &&
+      !currentNode.children.length == 0 &&
+      charsConsumed < labelLength
+    ) {
       let candidateEdge = null;
 
       for (const edge of currentNode.children) {
@@ -157,7 +173,6 @@ class PrefixTree {
           }
 
           if (candidateEdge) break;
-
         } else {
           if (edge.label == this.commonPrefix(edge.label, subLabel)) {
             charsConsumed += edge.label.length;
@@ -174,7 +189,11 @@ class PrefixTree {
       }
     }
 
-    if (currentNode != null && currentNode.index != null && charsConsumed == labelLength) {
+    if (
+      currentNode != null &&
+      currentNode.index != null &&
+      charsConsumed == labelLength
+    ) {
       return new MatchResult(label, currentNode.index, charsCaptured);
     } else {
       return EmptyResult;

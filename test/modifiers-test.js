@@ -1,16 +1,16 @@
-import test from 'ava'
-import Modifiers from '../src/modifiers.js'
+import test from "ava";
+import Modifiers from "../src/modifiers.js";
 
-test.beforeEach(t => {
+test.beforeEach((t) => {
   t.context = {
-    modifiers: new Modifiers()
-  }
-})
-
-test('lower', t => {
-  t.is(t.context.modifiers.lower('ONE'), 'one');
+    modifiers: new Modifiers(),
+  };
 });
 
-test('upper', t => {
-  t.is(t.context.modifiers.upper('one'), 'ONE');
+test("lower", (t) => {
+  t.is(t.context.modifiers.lower("ONE"), "one");
+});
+
+test("upper", (t) => {
+  t.is(t.context.modifiers.upper("one"), "ONE");
 });

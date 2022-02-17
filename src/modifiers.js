@@ -1,4 +1,4 @@
-const SPACE_CHAR = ' ';
+const SPACE_CHAR = " ";
 
 class Modifiers {
   upper(input) {
@@ -10,9 +10,13 @@ class Modifiers {
   }
 
   title(input) {
-    return input.toLowerCase().split(SPACE_CHAR).map(function(word) {
-      return word.replace(word[0], word[0].toUpperCase());
-    }).join(SPACE_CHAR);
+    return input
+      .toLowerCase()
+      .split(SPACE_CHAR)
+      .map(function (word) {
+        return word.replace(word[0], word[0].toUpperCase());
+      })
+      .join(SPACE_CHAR);
   }
 
   sentence() {

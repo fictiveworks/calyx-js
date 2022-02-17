@@ -1,25 +1,25 @@
-import { flattenTree } from "./utils.js"
+import { flattenTree } from "./utils.js";
 
 class Result {
   constructor(expression) {
-    this.expression = Object.freeze(expression)
+    this.expression = Object.freeze(expression);
   }
 
   get tree() {
-    return this.expression
+    return this.expression;
   }
 
   get text() {
-    return this.toString()
+    return this.toString();
   }
 
   toString() {
-    return flattenTree(this.expression).join('')
+    return flattenTree(this.expression).join("");
   }
 }
 
 function result(expression) {
-  return new Result(expression)
+  return new Result(expression);
 }
 
-export default result
+export default result;

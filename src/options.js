@@ -1,5 +1,5 @@
 const Options = {
-  rng: Math.random
-}
+  rng: Math.random,
+};
 
 export default Options;
