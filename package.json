@@ -4,7 +4,7 @@
   "description": "Generative grammars for creative coding",
   "repository": "github:fictiveworks/calyx",
   "type": "module",
-  "exports": "src/calyx.js",
+  "exports": "./src/calyx.js",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
