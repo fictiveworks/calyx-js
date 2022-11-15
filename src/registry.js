@@ -8,6 +8,7 @@ class Registry {
     this.memos = {};
     this.uniques = {};
     this.context = {};
+    this.level = 0;
 
     for (const key in rules) {
       this.rules[key] = rule(key, rules[key], this);
@@ -34,6 +35,26 @@ class Registry {
     if (!expansion) throw new Error(`UndefinedRule: ${symbol}`);
 
     return expansion;
+  }
+
+  hasMemoExpanded(symbol) {
+    return this.memos[symbol];
+  }
+
+  pushBranch() {
+    this.level++;
+  }
+
+  popBranch() {
+    this.level--;
+    if (this.level < this.memoLevel) {
+      this.memoLevel = 0;
+      this.memos = {};
+    }
+  }
+
+  setBranchScopedMemo() {
+    this.memoLevel = this.level;
   }
 
   evaluateMemo(symbol) {
