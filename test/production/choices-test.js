@@ -1,5 +1,6 @@
 import test from "ava";
 import Options from "../../src/options.js";
+import Registry from "../../src/registry.js";
 import choices from "../../src/production/choices.js";
 
 // TODO: result tree for this use case is undefined in the Ruby implementation
@@ -10,7 +11,7 @@ import choices from "../../src/production/choices.js";
 // })
 
 test("construct choices from list of atoms", (t) => {
-  const production = choices(["atom", "atom", "atom"]);
+  const production = choices(["atom", "atom", "atom"], new Registry({}, {}));
 
   t.deepEqual(production.evaluate(Options), [
     Symbol.for("choice"),
