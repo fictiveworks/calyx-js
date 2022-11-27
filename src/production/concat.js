@@ -3,6 +3,7 @@ import terminal from "./terminal.js";
 import expression from "./expression.js";
 import memo from "./memo.js";
 import unique from "./unique.js";
+import indirection from "./indirection.js";
 
 class Concat {
   constructor(expansion) {
@@ -19,12 +20,13 @@ class Concat {
   }
 }
 
-const EXPRESSION_PATTERN = /(\{[A-Za-z0-9_@$\.]+\})/;
+const EXPRESSION_PATTERN = /(\{[A-Za-z0-9_@~$\.]+\})/;
 const START_TOKEN = "{";
 const END_TOKEN = "}";
 const DEREF_TOKEN = ".";
 const MEMO_SIGIL = "@";
 const UNIQUE_SIGIL = "$";
+const INDIRECTION_SIGIL = "~";
 
 function concat(production, registry) {
   const expansion = production.split(EXPRESSION_PATTERN).map((fragment) => {
@@ -39,6 +41,8 @@ function concat(production, registry) {
         rule = memo(expr[0].slice(1, fragment.length - 1), registry);
       } else if (expr[0][0] == UNIQUE_SIGIL) {
         rule = unique(expr[0].slice(1, fragment.length - 1), registry);
+      } else if (expr[0][0] == INDIRECTION_SIGIL) {
+        rule = indirection(expr[0].slice(1, fragment.length - 1), registry);
       } else {
         rule = nonTerminal(expr[0], registry);
       }
